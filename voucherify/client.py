@@ -206,6 +206,20 @@ class Customers(VoucherifyRequest):
         )
 
 
+class Orders(VoucherifyRequest):
+    def __init__(self, *args, **kwargs):
+        super(Orders, self).__init__(*args, **kwargs)
+
+    def create(self, order):
+        path = '/orders/'
+
+        return self.request(
+            path,
+            method='POST',
+            data=json.dumps(order)
+        )
+
+
 class Client(VoucherifyRequest):
     def __init__(self, *args, **kwargs):
         super(Client, self).__init__(*args, **kwargs)
@@ -213,6 +227,7 @@ class Client(VoucherifyRequest):
         self.vouchers = Vouchers(*args, **kwargs)
         self.redemptions = Redemptions(*args, **kwargs)
         self.distributions = Distributions(*args, **kwargs)
+        self.orders = Orders(*args, **kwargs)
 
 
 class VoucherifyError(Exception):
