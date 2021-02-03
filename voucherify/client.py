@@ -205,6 +205,14 @@ class Customers(VoucherifyRequest):
             method='DELETE'
         )
 
+    def list(self, query):
+        path = '/customers/'
+
+        return self.request(
+            path,
+            params=query
+        )
+
 
 class Orders(VoucherifyRequest):
     def __init__(self, *args, **kwargs):
