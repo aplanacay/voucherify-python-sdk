@@ -227,6 +227,15 @@ class Orders(VoucherifyRequest):
             data=json.dumps(order)
         )
 
+    def update(self, order):
+        path = '/orders/' + quote(order.get('id'))
+
+        return self.request(
+            path,
+            data=json.dumps(order),
+            method='PUT'
+        )
+
 
 class Client(VoucherifyRequest):
     def __init__(self, *args, **kwargs):
