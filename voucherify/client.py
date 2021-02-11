@@ -243,6 +243,14 @@ class Orders(VoucherifyRequest):
             method='PUT'
         )
 
+    def list(self, query):
+        path = '/orders/'
+
+        return self.request(
+            path,
+            params=query
+        )
+
 
 class Client(VoucherifyRequest):
     def __init__(self, *args, **kwargs):
